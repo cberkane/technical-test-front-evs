@@ -1,0 +1,19 @@
+@if (loading) {
+    <div class="state-loading"> 
+        <app-loader [dark]="true" size="md"></app-loader>
+    </div>
+} @else if (errorMessage) {
+    <div class="state-error">
+        <h2 class="page-title">Une erreur est survenue.</h2> 
+        <p class="message">{{ errorMessage }}</p>
+    </div>
+} @else if (empty) {
+    <div class="state-empty">
+        <h2 class="page-title">Aucun résultat trouvé.</h2>
+        <p class="message">{{ emptyMessage }}</p>
+    </div>
+} @else {
+    <div class="state-wrapper">
+        <ng-content></ng-content>
+    </div>
+}

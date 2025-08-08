@@ -1,0 +1,36 @@
+@import "variables";
+
+.btn {
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    cursor: pointer;
+    
+    &.plain {
+        color: #fff;
+        background-color: $primary;
+    }
+    
+    &.outline {
+        color: $primary;
+        border: 1px solid $primary;
+        background-color: #fff;
+    }
+
+    &.loading {
+        .btn-content {
+            opacity: 0;
+        }
+
+        .btn-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
