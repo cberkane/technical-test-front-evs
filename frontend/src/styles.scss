@@ -1,0 +1,57 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+@import "variables";
+
+
+/* GLOBAL */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-primary;
+  background-color: $background-light;
+  color: $text-primary;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+
+/* RESET */
+button {
+  all: unset;
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+
+/* UTILS */
+.page {
+  height: 100%;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.text-info {
+  font-size: 14px;
+  font-weight: 400;
+  color: $text-info;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}
