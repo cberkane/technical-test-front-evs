@@ -1,0 +1,30 @@
+<div class="add-exam-container">
+  <app-page-header 
+    title="Organiser un examen"
+    info="Remplir le formulaire ci-dessous pour créer un examen."
+  />
+  <form class="add-exam-form" [formGroup]="addExamForm">
+    <div class="form-student" formGroupName="student">
+      <input type="text" formControlName="first_name" placeholder="Prénom" />
+      <input type="text" formControlName="last_name" placeholder="Nom" />
+    </div>
+    <div>
+      <input
+        type="text"
+        formControlName="meeting_point"
+        placeholder="Point de rendez-vous"
+      />
+      <input type="date" formControlName="date" />
+      <select formControlName="status">
+        <option value="à organiser">À organiser</option>
+        <option value="confirmé">Confirmé</option>
+        <option value="annulé">Annulé</option>
+        <option value="Recherche de place">Recherche de place</option>
+      </select>
+    </div>
+    <div class="form-buttons">
+      <app-button variant="outline" (click)="cancel()">Annuler</app-button>
+      <app-button (click)="submitForm()">Organiser</app-button>
+    </div>
+  </form>
+</div>

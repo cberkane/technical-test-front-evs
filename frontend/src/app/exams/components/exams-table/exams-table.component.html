@@ -1,0 +1,44 @@
+<table class="exams-table bordered">
+  <!-- TODO: Isoler le pattern (en attente) -->
+  <tbody>
+    @for (exam of exams; track exam.date) {
+      <tr>
+        <td class="bold">
+          {{ exam.student.first_name }} {{ exam.student.last_name }}
+        </td>
+        <td>
+          @if(exam.meeting_point) {
+            <span class="bold">
+              {{ exam.meeting_point }}
+            </span>
+          } @else {
+            <span class="italic">En attente</span>
+          }
+        </td>
+        <td>
+          @if(exam.date) {
+            <span class="bold">
+              {{ exam.date | date : "mediumDate" : undefined : "fr-FR" }}
+            </span>
+          } @else {
+            <span class="italic">En attente</span>
+          }
+        </td>
+        <td>
+          @if(exam.date) {
+            <span class="bold">
+              {{ exam.date | date : "shortTime" : undefined : "fr-FR" }}
+            </span>
+          } @else {
+            <span class="italic">En attente</span>
+          }
+        </td>
+        <td>
+          <app-chip [variant]="exam.statusColor">
+            {{ exam.status }}
+          </app-chip>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

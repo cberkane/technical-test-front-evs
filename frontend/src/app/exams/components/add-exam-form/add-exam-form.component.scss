@@ -1,0 +1,18 @@
+.add-exam-container {
+    app-page-header {
+        display: flex;
+        margin-bottom: 24px;
+    }
+
+    .add-exam-form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+    }
+}

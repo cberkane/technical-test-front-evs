@@ -1,0 +1,25 @@
+<div class="page page-exams-list">
+  <!-- Header -->
+  <app-page-header title="Mes examens" [info]="examsInfo">
+    <app-button slot="actions" (click)="openAddDialog()">
+      Organiser un examen
+    </app-button>
+  </app-page-header>
+  <!-- Content -->
+  <div class="content">
+    <app-state-wrapper  [loading]="examsLoading" [errorMessage]="examsError" [empty]="exams?.length === 0"
+      emptyMessage="Ajouter un examen en appuyant sur le bouton ci-dessus."
+    >
+      <div>
+        <app-exams-table [exams]="exams" />
+      </div>
+    </app-state-wrapper>
+  </div>
+</div>
+
+<!-- Dialogs -->
+<ng-template #addDialog>
+  <app-card>
+    <app-add-exam-form (cancelled)="closeAddDialog()" />
+  </app-card>
+</ng-template>

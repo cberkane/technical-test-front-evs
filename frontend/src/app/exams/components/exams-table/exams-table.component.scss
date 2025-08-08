@@ -1,0 +1,19 @@
+@import "variables";
+
+.exams-table {
+    width: 100%;
+    border-spacing: 0 12px;
+    color: $text-info;
+    font-size: 12px;
+    
+    tr {
+        outline: 1px solid $border-gray;
+        border-radius: 8px;
+        padding: 1rem 0;
+        margin-bottom: 12px;
+
+        td {
+            padding: 16px 28px;
+        }
+    }
+}
