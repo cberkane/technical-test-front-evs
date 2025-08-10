@@ -12,6 +12,6 @@ import { NgClass} from '@angular/common';
 })
 export class ChipComponent {
 
-  @Input() variant: 'primary' | 'info' | 'success' | 'error' = 'primary';
+  @Input() variant?: 'primary' | 'info' | 'success' | 'error' = 'primary';
 
 }
