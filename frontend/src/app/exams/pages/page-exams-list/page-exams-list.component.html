@@ -1,13 +1,19 @@
 <div class="page page-exams-list">
   <!-- Header -->
   <app-page-header title="Mes examens" [info]="examsInfo">
-    <app-button slot="actions" (click)="openAddDialog()">
-      Organiser un examen
-    </app-button>
+    <p-button
+      slot="actions"
+      label="Organiser un examen"
+      (click)="addDialogVisible = !addDialogVisible"
+    />
   </app-page-header>
+
   <!-- Content -->
   <div class="content">
-    <app-state-wrapper  [loading]="examsLoading" [errorMessage]="examsError" [empty]="exams?.length === 0"
+    <app-state-wrapper
+      [loading]="examsLoading"
+      [errorMessage]="examsError"
+      [empty]="exams?.length === 0"
       emptyMessage="Ajouter un examen en appuyant sur le bouton ci-dessus."
     >
       <div>
@@ -17,9 +23,12 @@
   </div>
 </div>
 
-<!-- Dialogs -->
-<ng-template #addDialog>
-  <app-card>
-    <app-add-exam-form (cancelled)="closeAddDialog()" />
-  </app-card>
-</ng-template>
+<!-- Dialog -->
+<p-dialog
+  [modal]="true"
+  [(visible)]="addDialogVisible"
+  [style]="{ width: '35rem', height: '80vh' }"
+  header="Organiser un évenement"
+>
+  <app-add-exam-form (cancelled)="addDialogVisible = false" (submitted)="refresh()"/>
+</p-dialog>

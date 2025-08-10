@@ -1,14 +1,17 @@
 <table class="exams-table bordered">
-  <!-- TODO: Isoler le pattern (en attente) -->
   <tbody>
     @for (exam of exams; track exam.date) {
       <tr>
-        <td class="bold">
-          {{ exam.student.first_name }} {{ exam.student.last_name }}
+        <td>
+          <span class="bold">
+            <i class="pi pi-user"></i>
+            {{ exam.student.first_name }} {{ exam.student.last_name }}
+          </span>
         </td>
         <td>
           @if(exam.meeting_point) {
             <span class="bold">
+              <i class="pi pi-map-marker"></i>
               {{ exam.meeting_point }}
             </span>
           } @else {
@@ -18,6 +21,7 @@
         <td>
           @if(exam.date) {
             <span class="bold">
+              <i class="pi pi-calendar"></i>
               {{ exam.date | date : "mediumDate" : undefined : "fr-FR" }}
             </span>
           } @else {
@@ -27,6 +31,7 @@
         <td>
           @if(exam.date) {
             <span class="bold">
+              <i class="pi pi-clock"></i>
               {{ exam.date | date : "shortTime" : undefined : "fr-FR" }}
             </span>
           } @else {
@@ -34,9 +39,11 @@
           }
         </td>
         <td>
-          <app-chip [variant]="exam.statusColor">
-            {{ exam.status }}
-          </app-chip>
+          @if (exam.status) {
+            <p-chip [label]="exam.status" [attr.data-status]="exam.statusColor"/>
+          } @else {
+            <p-chip label="à organiser" data-status="primary" />
+          }
         </td>
       </tr>
     }

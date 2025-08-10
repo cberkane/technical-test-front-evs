@@ -1,30 +1,83 @@
-<div class="add-exam-container">
-  <app-page-header 
-    title="Organiser un examen"
-    info="Remplir le formulaire ci-dessous pour créer un examen."
-  />
-  <form class="add-exam-form" [formGroup]="addExamForm">
-    <div class="form-student" formGroupName="student">
-      <input type="text" formControlName="first_name" placeholder="Prénom" />
-      <input type="text" formControlName="last_name" placeholder="Nom" />
+<form class="add-exam-form" [formGroup]="form">
+  <!-- Student -->
+  <p-fieldset legend="Élève">
+    <div class="form-row" formGroupName="student">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          formControlName="first_name"
+          id="first_name"
+          autocomplete="off"
+        />
+        <label for="first_name">* Prénom</label>
+      </p-floatlabel>
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          formControlName="last_name"
+          id="last_name"
+          autocomplete="off"
+        />
+        <label for="last_name">* Nom de famille</label>
+      </p-floatlabel>
     </div>
-    <div>
-      <input
-        type="text"
-        formControlName="meeting_point"
-        placeholder="Point de rendez-vous"
+  </p-fieldset>
+
+  <!-- Appointment -->
+  <p-fieldset legend="Rendez-vous">
+    <div class="form-row">
+      <p-floatlabel variant="on">
+        <input
+          formControlName="meeting_point"
+          pInputText
+          id="meeting_point"
+          autocomplete="off"
+        />
+        <label for="meeting_point">Point de rendez-vous</label>
+      </p-floatlabel>
+      <p-select
+        formControlName="status"
+        [options]="selectOptions"
+        placeholder="Status"
       />
-      <input type="date" formControlName="date" />
-      <select formControlName="status">
-        <option value="à organiser">À organiser</option>
-        <option value="confirmé">Confirmé</option>
-        <option value="annulé">Annulé</option>
-        <option value="Recherche de place">Recherche de place</option>
-      </select>
     </div>
-    <div class="form-buttons">
-      <app-button variant="outline" (click)="cancel()">Annuler</app-button>
-      <app-button (click)="submitForm()">Organiser</app-button>
+  </p-fieldset>
+
+  <!-- Date & time (splitted) -->
+  <p-fieldset legend="Date et heure">
+    <div class="form-row">
+      <p-floatlabel variant="on">
+        <p-datepicker
+          formControlName="date"
+          [minDate]="today"
+          [showIcon]="true"
+          [showOnFocus]="false"
+          inputId="date"
+        />
+        <label for="date">Date</label>
+      </p-floatlabel>
+      <p-floatlabel variant="on">
+        <p-datepicker 
+          formControlName="time" 
+          [timeOnly]="true" 
+          [showIcon]="true"
+          [iconDisplay]="'input'" 
+          inputId="time" 
+        />
+        <label for="time">Heure</label>
+      </p-floatlabel>
     </div>
-  </form>
-</div>
+  </p-fieldset>
+
+  @if (formError) {
+    <p class="form-error">
+      {{ formError }}
+    </p>
+  }
+  
+  <!-- Submit -->
+  <div class="form-buttons">
+    <p-button variant="outlined" label="Annuler" (click)="cancel()" />
+    <p-button label="Ajouter" (click)="submitForm()" [disabled]="form.invalid" />
+  </div>
+</form>

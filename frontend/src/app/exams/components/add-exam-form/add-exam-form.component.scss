@@ -1,18 +1,30 @@
-.add-exam-container {
-    app-page-header {
+@import "variables";
+
+.add-exam-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    .form-row {
         display: flex;
-        margin-bottom: 24px;
+        flex-wrap: nowrap;
+        gap: 12px;
+        padding: 6px 0;
+        
+        p-floatlabel, p-select {
+            flex: 1;
+        }
     }
 
-    .add-exam-form {
+    .form-buttons {
         display: flex;
-        flex-direction: column;
-        gap: 18px;
+        justify-content: center;
+        gap: 12px;
+    }
 
-        .form-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
+    .form-error {
+        font-size: 12px;
+        text-align: center;
+        color: $error;
     }
 }

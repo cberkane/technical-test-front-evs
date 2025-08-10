@@ -15,7 +15,7 @@ export class ExamsApiService {
   list(): Observable<Exam[]> {
     return this.http.get<Exam[]>(`${environment.apiUrl}/${this.path}`).pipe(
       catchError(() => {
-        // TODO: implement better error handling
+        // example
         return throwError(() => 'Impossible de récupérer les examens. Veuillez réessayer plus tard.');
       }),
       map(exams => this.processExams(exams))
@@ -23,15 +23,32 @@ export class ExamsApiService {
   }
 
   add(exam: Exam): Observable<Exam> {
-    return this.http.post<Exam>(`${environment.apiUrl}/${this.path}`, exam);
+    return this.http.post<Exam>(`${environment.apiUrl}/${this.path}`, exam).pipe(
+      catchError(() => {
+        // example
+        return throwError(() => 'Impossible d\'ajouter l\'examen. Veuillez réessayer plus tard.');
+      }),
+    )
   }
 
   private processExams(exams: Exam[]): Exam[] {
     exams.forEach((exam) => {
-      if (exam.status === ExamStatus.CONFIRMED) exam.statusColor = 'success';
-      else if (exam.status === ExamStatus.CANCELED) exam.statusColor = 'error';
-      else if (exam.status === ExamStatus.AVAILABILITY_CHECK) exam.statusColor = 'info';
-      else if (exam.status === ExamStatus.TO_COME) exam.statusColor = 'primary';
+      switch (exam.status?.toLowerCase()) {
+      case ExamStatus.CONFIRMED:
+        exam.statusColor = 'success';
+        break;
+      case ExamStatus.CANCELED:
+        exam.statusColor = 'error';
+        break;
+      case ExamStatus.AVAILABILITY_CHECK:
+        exam.statusColor = 'info';
+        break;
+      case ExamStatus.TO_COME:
+        exam.statusColor = 'primary';
+        break;
+      default:
+        exam.statusColor = 'primary';
+    }
     });
     return exams;
   }

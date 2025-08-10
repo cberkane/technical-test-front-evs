@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { ChipModule } from 'primeng/chip';
 
-import { ChipComponent } from 'src/app/core/components/chip/chip.component';
 import { Exam } from 'src/app/exams/models/exam.model';
 
 
@@ -11,8 +11,8 @@ import { Exam } from 'src/app/exams/models/exam.model';
   templateUrl: './exams-table.component.html',
   styleUrl: './exams-table.component.scss',
   imports: [
+    ChipModule,
     DatePipe,
-    ChipComponent,
   ],
 })
 export class ExamsTableComponent {

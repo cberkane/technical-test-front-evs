@@ -7,10 +7,12 @@ import { dialog } from './dialog';
 import { floatlabel } from './floatlabel';
 import { inputtext } from './inputtext';
 import { select } from './select';
+import { chip } from './chip';
 
 export const CustomTheme = definePreset(Aura, {
   components: {
     button,
+    chip,
     datepicker,
     dialog,
     floatlabel,

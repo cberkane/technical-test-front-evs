@@ -4,12 +4,12 @@
     </div>
 } @else if (errorMessage) {
     <div class="state-error">
-        <h2 class="page-title">Une erreur est survenue.</h2> 
+        <h1 class="page-title">Une erreur est survenue.</h1> 
         <p class="message">{{ errorMessage }}</p>
     </div>
 } @else if (empty) {
     <div class="state-empty">
-        <h2 class="page-title">Aucun résultat trouvé.</h2>
+        <h1 class="page-title">Aucun résultat trouvé.</h1>
         <p class="message">{{ emptyMessage }}</p>
     </div>
 } @else {
